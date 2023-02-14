@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import Header from "./Header";
 import "./App.css";
+import ScrollIndicator from "./common/ScrollIndicator";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,14 +18,14 @@ function App() {
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
       </div>
-      <h1>React + Vite</h1>
-      <h2>On CodeSandbox!</h2>
+      <h1>CapCut Header 动效</h1>
+      <h2>缩小屏幕宽度查看菜单在中屏和移动端的效果。</h2>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR.
+          缩小屏幕宽度查看菜单在中屏和移动端的效果。
         </p>
 
         <p>
@@ -35,6 +36,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <ScrollIndicator/>
     </div>
   );
 }

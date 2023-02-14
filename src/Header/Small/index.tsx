@@ -38,7 +38,7 @@ const Block = styled.div`
   flex: 0 0 auto;
   text-align: left;
   overflow: hidden;
-  transition: 0.32s all;
+  transition: 0.24s all;
   h2 {
     margin: 0;
     margin-bottom: 26px;
@@ -59,7 +59,7 @@ const Block = styled.div`
       width: 16px;
       height: 16px;
       transform: rotate(
-        ${({ isExpanded }: { isExpanded: boolean }) =>
+        ${({ isExpanded }: { isExpanded?: boolean }) =>
           isExpanded ? 0 : "180deg"}
       );
       transition: 0.24s transform;
@@ -117,13 +117,13 @@ const defaultHeights = {
 function MobileMenus({ visible }: Props) {
   const [tab, setTab] = useState("");
   const [isHover, setIsHover] = useState(false);
-  const [heights, setHeights] = useState(defaultHeights);
+  const [heights, setHeights] = useState<any>(defaultHeights);
 
-  function toggleExpand(section) {
+  function toggleExpand(section: any) {
     const currentHeight = heights[section];
     setHeights({
       ...heights,
-      [section]: currentHeight === 32 ? defaultHeights[section] : 32,
+      [section]: currentHeight === 32 ? (defaultHeights as any)[section] : 32,
     });
   }
 
@@ -157,7 +157,7 @@ function MobileMenus({ visible }: Props) {
         <HorizontalDivdider />
         <Block
           style={{ height: heights.create + "px" }}
-          isExpaned={heights.create !== 32}
+          isExpanded={heights.create !== 32}
         >
           <h3 onClick={() => toggleExpand("create")}>
             Create
@@ -178,7 +178,7 @@ function MobileMenus({ visible }: Props) {
         <HorizontalDivdider />
         <Block
           style={{ height: heights.resources + "px" }}
-          isExpaned={heights.resources !== 32}
+          isExpanded={heights.resources !== 32}
         >
           <h3 onClick={() => toggleExpand("resources")}>
             Resources
